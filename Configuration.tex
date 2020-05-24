@@ -1,0 +1,408 @@
+%%% required packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{babel}
+\usepackage{etoolbox}
+\usepackage{graphicx}
+\usepackage{csquotes}
+\usepackage{pifont}
+\usepackage[scaled=0.89]{sourcecodepro}
+\usepackage{listings}
+\usepackage{tikz}
+\usepackage{tikz-qtree}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{fontawesome}
+
+\usepackage{microtype}
+\DisableLigatures[f]{encoding = *, family = tt }
+
+\newcommand{\chck}{\ensuremath\checkmark}
+\newcommand{\semester}{Summer 2020}
+\newcommand{\veranstaltung}{Title of the Lecture}
+
+
+\usepackage[shellescape]{gmp}
+
+%%%%%%%
+\definecolor{lightyellow}{rgb}{1,1,0.8}
+\definecolor{colKeys}{rgb}{0,0,1}
+\definecolor{colIdentifier}{rgb}{0,0,0}
+\definecolor{colComments}{rgb}{1,0,0}
+\definecolor{colString}{rgb}{0,0.5,0}
+
+\definecolor{lightgray}{rgb}{.9,.9,.9}
+\definecolor{darkgray}{rgb}{.4,.4,.4}
+\definecolor{purple}{rgb}{0.65, 0.12, 0.82}
+
+\definecolor{folderbg}{RGB}{124,166,198}
+\definecolor{folderborder}{RGB}{110,144,169}
+
+
+\setbeamertemplate{enumerate item}{(\alph{enumi})}
+\setbeamertemplate{enumerate subitem}{(\roman{enumii})}
+
+% \setbeamertemplate{navigation symbols}{\insertslidenavigationsymbol \insertframenavigationsymbol \insertbackfindforwardnavigationsymbol}
+
+\setbeamertemplate{navigation symbols}{}
+
+
+\usepackage{forest} % https://tex.stackexchange.com/questions/5073/making-a-simple-directory-tree
+
+
+\def\Size{4pt}
+\tikzset{
+  folder/.pic={
+    \filldraw[draw=folderborder,top color=folderbg!50,bottom color=folderbg]
+      (-1.05*\Size,0.2\Size+5pt) rectangle ++(.75*\Size,-0.2\Size-5pt);  
+    \filldraw[draw=folderborder,top color=folderbg!50,bottom color=folderbg]
+      (-1.15*\Size,-\Size) rectangle (1.15*\Size,\Size);
+  }
+}
+
+
+
+% https://tex.stackexchange.com/questions/161549/scaling-inline-code-to-the-current-font-size
+\makeatletter
+\lstdefinestyle{mystyle}{
+  basicstyle=%
+    \ttfamily
+    \color{blue}%
+    \lst@ifdisplaystyle\scriptsize\fi
+}
+\makeatother
+
+\makeatletter
+\lstdefinestyle{ausgabe}{
+  basicstyle=\ttfamily\scriptsize,%
+  backgroundcolor=\color{lightgray}%
+}
+\makeatother
+
+\usetikzlibrary{shapes,snakes}
+
+% Venn Diagrams
+% Definition of circles
+\def\firstcircle{(0,0) circle (2cm)}
+\def\secondcircle{(0:3cm) circle (2cm)}
+
+\colorlet{circle edge}{blue!50}
+\colorlet{circle area}{blue!20}
+
+\tikzset{filled/.style={fill=circle area, draw=circle edge, thick},
+    outline/.style={draw=circle edge, thick}}
+
+%%% end venn
+
+\lstnewenvironment{ausgabe}{\lstset{style=ausgabe}}{} 
+
+\lstset{%
+    float=hbp,%
+    basicstyle=\ttfamily\footnotesize, %
+	style=mystyle,%
+    identifierstyle=\color{colIdentifier}, %
+    keywordstyle=\color{colKeys}, %
+    stringstyle=\color{colString}, %
+    commentstyle=\color{colComments}, %
+    literate={fl}{{f{}l}}2,%
+    columns=flexible, %
+    tabsize=2, %
+    frame=single, %
+    upquote=true,%
+    extendedchars=true, %
+    showspaces=false, %
+    showstringspaces=false, %
+    numbers=left, %
+    numberstyle=\tiny, %
+    breaklines=true, %
+    backgroundcolor=\color{lightyellow}, %
+    breakautoindent=true, %
+    captionpos=b%
+}
+
+%%%%%%%%%%%%
+\lstset{literate=%
+    {Ö}{{\"O}}1
+    {Ä}{{\"A}}1
+    {Ü}{{\"U}}1
+    {ß}{{\ss}}1
+    {ü}{{\"u}}1
+    {ä}{{\"a}}1
+    {ö}{{\"o}}1
+    {~}{{\textasciitilde}}1
+}
+
+\usepackage{MnSymbol} % for $\filledsquare$
+\usepackage{svn-multi}
+\usepackage[absolute,verbose,overlay]{textpos}
+
+%%%% Color Definitions
+\definecolor{fom}{RGB}{0,153,139}
+\definecolor{myblue}{RGB}{0,0,125}
+
+\usepackage{mdframed}
+\newmdenv [linecolor=myblue, frametitle=Infobox,leftmargin=1cm,rightmargin=1cm]{infobox}
+
+%%% Commands to position the FOM Logo in the top right corner and the horizontal rule in the footer
+
+\newcommand{\poslogo}{%
+  \setlength{\TPHorizModule}{1cm}
+  \setlength{\TPVertModule}{1cm}
+  \begin{textblock}{1}(11.5,0.3)
+   \includegraphics[width=1cm]{Template/logo}
+  \end{textblock}}
+  
+  \newcommand{\footaline}{%
+  \setlength{\TPHorizModule}{0.5cm}
+  \setlength{\TPVertModule}{1cm}
+  \begin{textblock}{1}(0.5,9.2)
+   {\color{myblue}\rule{\dimexpr\paperwidth-0.6cm\relax}{0.3pt}}
+  \end{textblock}}
+  
+%%% Custom titlepage 
+
+\makeatletter
+ \usebackgroundtemplate{
+    \ifnum\c@framenumber=1%
+        \includegraphics[width=\paperwidth,height=\paperheight]{Template/background}
+	\else 
+        %\includegraphics[width=\paperwidth,height=\paperheight]{background2}
+	 \fi%
+}
+\makeatother
+  
+\defbeamertemplate*{title page}{customized}[1][]
+{\vspace*{6.5cm}
+ \begin{flushright}
+  \usebeamerfont{title}\inserttitle\par
+  \usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par
+  \bigskip
+  \usebeamerfont{author}\insertauthor\par
+  \usebeamerfont{institute}\insertinstitute\par
+  \usebeamerfont{date}\insertdate\par
+  \usebeamercolor[fg]{titlegraphic}\inserttitlegraphic
+\end{flushright}
+}
+  
+%%% Adjustment of the Frame header (color)
+
+\makeatletter
+\setbeamertemplate{frametitle}
+{
+  \ifbeamercolorempty[bg]{frametitle}{}{\nointerlineskip}%
+  \@tempdima=\textwidth%
+  \advance\@tempdima by\beamer@leftmargin%
+  \advance\@tempdima by\beamer@rightmargin%
+  \begin{beamercolorbox}[sep=0.3cm,left,wd=\the\@tempdima]{frametitle}
+    \vbox{}\vskip-1ex%
+    \if@tempswa\else\csname beamer@fteleft\endcsname\fi%
+    {\strut\color{myblue}\bfseries\insertframetitle\strut\par%
+    {%
+      \ifx\insertframesubtitle\@empty%
+      \else%
+      {\usebeamerfont{framesubtitle}\usebeamercolor[fg]{framesubtitle}\insertframesubtitle\strut\par}%
+      \fi
+    }%
+    \vskip-1.5ex%
+    \rule{\dimexpr\paperwidth-1.6cm\relax}{0.4pt}}
+    \if@tempswa\else\vskip-.3cm\fi% set inside beamercolorbox... evil here...
+  \end{beamercolorbox}%
+  \poslogo
+    %
+}
+\makeatother
+
+%%%%%%%%%%%% adjust footnote alignment
+
+\makeatletter
+\renewcommand<>\beamer@framefootnotetext[1]{%
+  \global\setbox\beamer@footins\vbox{%
+    \hsize\framewidth
+    \textwidth\hsize
+    \columnwidth\hsize
+    \unvbox\beamer@footins
+    \reset@font\footnotesize
+    \@parboxrestore
+    \protected@edef\@currentlabel
+         {\csname p@footnote\endcsname\@thefnmark}%
+    \color@begingroup
+      \uncover#2{\@makefntext{%
+        \rule\z@\footnotesep\ignorespaces\parbox[t]{.9\textwidth}{#1\@finalstrut\strutbox}\vskip1sp}}%
+    \color@endgroup}%
+}
+\makeatother
+
+%%%%%%%% end adjustment frame header
+
+%%%%%%%% adjustment of footer
+
+\makeatletter
+\patchcmd{\beamer@calculateheadfoot}{\advance\footheight by 4pt}{\advance\footheight by 20pt}{}{}
+\makeatother
+
+%%%%%%%% end adjustment of footer 
+
+%%% setting various things
+\setbeamerfont{title}{series=\bfseries,size={\fontsize{18}{20}}}
+\setbeamerfont{subtitle}{series=\bfseries}
+
+\setbeamercolor{normal text}{fg=black}
+\setbeamercolor{alerted text}{fg=myblue}
+
+\setbeamercolor{frametitle}{fg=myblue}
+\setbeamercolor{title}{fg=myblue}
+\setbeamercolor{framesubtitle}{fg=myblue}
+\setbeamercolor{author in head/foot}{fg=myblue}
+\setbeamercolor{section in toc}{fg=myblue}
+\setbeamercolor{subsection in toc}{fg=myblue}
+
+\setbeamertemplate{frametitle continuation}{} %\insertcontinuationcount
+
+\setbeamertemplate{section in head/foot}{\hfill\insertsectionheadnumber.~\insertsectionhead}
+\setbeamertemplate{section in head/foot shaded}{\color{structure!50}\hfill\insertsectionheadnumber.~\insertsectionhead}
+\setbeamertemplate{section in toc}{\inserttocsectionnumber.~\inserttocsection}
+\setbeamertemplate{subsection in toc}{\hspace*{1em}\inserttocsectionnumber.\inserttocsubsectionnumber.~\inserttocsubsection\\}
+
+
+%%%% http://tex.stackexchange.com/questions/152565/define-a-new-block-environment-in-latex-beamer
+
+\newenvironment<>{remark}[1]{%
+  \setbeamercolor{block title}{fg=white,bg=myblue}%
+  \begin{block}#2{#1}}{\end{block}}
+\newenvironment<>{examplesecond}[1]{%
+  \setbeamercolor{block title}{fg=white,bg=blue!75!black}%
+  \begin{block}#2{#1}}{\end{block}}
+
+%\titlegraphic{\includegraphics[width=1.75cm]{Template/fomlogo}}
+
+\setbeamertemplate{navigation symbols}{}
+
+\setbeamercolor{itemize item}{fg=myblue}
+\setbeamercolor{itemize subitem}{fg=myblue}
+\setbeamercolor{itemize subsubitem}{fg=myblue}
+\setbeamercolor{caption name}{fg=myblue}
+
+\setbeamercolor{description item}{fg=myblue}
+\setbeamercolor{enumerate item}{fg=myblue}
+
+
+\setbeamertemplate{itemize item}{$\filledsquare$} % from MnSymbols
+\setbeamertemplate{itemize subitem}{\textbullet} % if you wnat a circle
+\setbeamertemplate{itemize subsubitem}{\textendash}% if you want a triangle
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%%%%% TOC Definition
+
+\AtBeginSection[]
+{
+ \begin{frame}<beamer>
+ \frametitle{Overview of this Lecture}
+ \framesubtitle{~}
+ 
+\tableofcontents[%
+    currentsection,% 
+    sectionstyle=show/hide,% 
+	hideothersubsections
+    ]%
+    \addtocounter{framenumber}{-1}
+  \end{frame}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\makeatother
+\setbeamertemplate{footline}
+{%
+  \leavevmode%
+%   \rule{\dimexpr\paperwidth-0.6cm\relax}{0.4pt}}
+   \hbox{\begin{beamercolorbox}[wd=.4\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm]{author in head/foot}%
+  \veranstaltung
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.6\paperwidth,ht=2.5ex,dp=1.125ex,leftskip=.3cm,rightskip=.3cm plus1fil]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\semester\hspace*{5.2cm}\insertpagenumber
+  \end{beamercolorbox}}%
+  \vskip0pt%
+  \footaline
+}
+\makeatletter
+
+
+
+
+%%% personal commands
+
+%%%% for bold Strings like inner-frame headers
+\newcommand{\fomh}[1]{\textbf{\textcolor{fom}{#1}}}
+\newcommand{\fomc}[1]{\texttt{\textcolor{fom}{#1}}}
+
+\newcommand{\okay}{\ding{51}}
+%%% good and bad 
+\newcommand{\good}[1]{\textbf{\textcolor{green}{#1}}}
+\newcommand{\bad}[1]{\textbf{\textcolor{red}{#1}}}
+
+%\renewcommand{\H}[1]{\texttt{<#1>}}
+
+\renewcommand{\H}[1]{\lstinline[language={HTML},basicstyle={\texttt\normalsize},morekeywords={rp,rt,section,ruby,figure,figcaption,article,aside,nav,header,footer,main,mark,bdi,time,wbr,details,dialog,datalist,keygen,meter,output,progress,menuitem,summary,audio,canvas,embed,source,track,video}]{<#1>}}
+
+\newcommand{\HA}[1]{\texttt{<#1\,/>}}
+
+%\newcommand{\HS}[1]{\texttt{<#1></#1>}:}
+
+\newcommand{\HS}[1]{\lstinline[language={HTML},basicstyle={\texttt\normalsize},morekeywords={mark,bdi,time,wbr,details,dialog,datalist,keygen,meter,output,progress,menuitem,summary,audio,canvas,embed,source,track,video}]{<#1></#1>:}}
+
+\newcommand{\todo}[1]{\textbf{#1}}
+\newcommand{\HT}[1]{\texttt{<#1></#1>}}
+
+\newcommand{\bilds}[1]{
+	\begin{figure}%
+	\centering%
+	\fbox{\includegraphics[width=\textwidth]{#1}}
+\end{figure}}
+
+\newcommand{\bild}[3]{
+	\begin{figure}%
+	\centering%
+	\includegraphics[width=#1\textwidth]{#2}
+	\caption{#3}
+\end{figure}}
+
+\newcommand{\bildf}[3]{
+	\begin{figure}%
+	\centering%
+	\fbox{\includegraphics[width=#1\textwidth]{#2}}
+	\caption{#3}
+\end{figure}}
+
+\newcommand{\bildfc}[2]{
+	\begin{figure}%
+	\centering%
+	\fbox{\includegraphics[width=#1\textwidth]{#2}}
+\end{figure}}
+
+
+%\usepackage[]{navigator}
+%\newcommand{\mbed}[1]{%
+%\embeddedfile[#1]{#1}{#1}}
+
+\usepackage{attachfile}
+\newcommand{\ta}[1]{\textattachfile[color=1 0 0]{#1}{\faFilePowerpointO}}
+
+\newcommand{\pypy}[2]{\lstinputlisting[language={Python},caption={#1 \ta{#2}}]{#2}}
+
+
+
+\hypersetup{
+  pdftitle={<Lecture Title>},
+  pdfauthor={<Lecturer>},
+  pdfsubject={<Subject>},
+  pdfkeywords={<Keywords>}
+}
+
+\author{<Lecturer>}
+\title{<Lecture Title>}
+\subtitle{\semester}
+\date{\today}
+

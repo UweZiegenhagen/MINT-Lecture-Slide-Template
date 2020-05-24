@@ -1,0 +1,29 @@
+%!TEX TS-program = Arara
+% arara: pdflatex: {shell: yes}
+% arara: pdflatex: {shell: yes}
+% arara: clean: { extensions: [log, aux, nav, out, snm, vrb, toc, gz]}
+
+\documentclass[english]{beamer}
+
+\input{Configuration}
+
+\usepackage{pgfpages}
+\mode<handout>{%
+    \pgfpagesuselayout{2 on 1}[a4paper] 
+    %\setbeameroption{show notes}
+}
+
+
+\begin{document}
+
+\frame[containsverbatim]{
+\maketitle
+
+}
+
+
+
+\input{Chapter01}
+
+\end{document}
+

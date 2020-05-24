@@ -1,0 +1,37 @@
+%!TEX TS-program = Arara
+% arara: pdflatex: {shell: yes}
+% arara: pdflatex: {shell: yes}
+% arara: clean: { extensions: [ log, aux, nav, out, snm, vrb, toc, gz ] }
+
+\documentclass[english]{beamer}
+
+\input{Configuration}
+
+
+\begin{document}
+
+\frame[containsverbatim]{
+\maketitle
+
+}
+
+\frame[allowframebreaks]{
+\frametitle{Content}
+\framesubtitle{~}
+
+\tableofcontents[hideallsubsections]
+
+}
+
+
+\input{Chapter01}
+\input{Chapter01}
+\input{Chapter01}
+\input{Chapter01}
+\input{Chapter01}
+\input{Chapter01}
+\input{Chapter01}
+\input{Chapter01}
+
+
+\end{document}
