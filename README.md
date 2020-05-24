@@ -1,2 +1,3 @@
-# MINT-Lecture-Slide-Template
-A template for Lectures in math/programming based on LaTeX Beamer
+# MINT Lecture Slides Template
+
+This repo contains a template for slides in programming or MINT-related subjects (Math and sourcecode listings).
