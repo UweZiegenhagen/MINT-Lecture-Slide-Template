@@ -74,12 +74,7 @@
 }
 \makeatother
 
-\makeatletter
-\lstdefinestyle{ausgabe}{
-  basicstyle=\ttfamily\scriptsize,%
-  backgroundcolor=\color{lightgray}%
-}
-\makeatother
+
 
 \usetikzlibrary{shapes,snakes}
 
@@ -95,6 +90,13 @@
     outline/.style={draw=circle edge, thick}}
 
 %%% end venn
+
+\makeatletter
+\lstdefinestyle{ausgabe}{
+  basicstyle=\ttfamily\scriptsize,%
+  backgroundcolor=\color{lightgray}%
+}
+\makeatother
 
 \lstnewenvironment{ausgabe}{\lstset{style=ausgabe}}{} 
 
@@ -244,6 +246,16 @@
 
 %%%%%%%% end adjustment of footer 
 
+
+% Color definitions
+\setbeamercolor{itemize item}{fg=myblue}
+\setbeamercolor{itemize subitem}{fg=myblue}
+\setbeamercolor{itemize subsubitem}{fg=myblue}
+\setbeamercolor{caption name}{fg=myblue}
+\setbeamercolor{description item}{fg=myblue}
+\setbeamercolor{enumerate item}{fg=myblue}
+
+
 %%% setting various things
 \setbeamerfont{title}{series=\bfseries,size={\fontsize{18}{20}}}
 \setbeamerfont{subtitle}{series=\bfseries}
@@ -259,14 +271,13 @@
 \setbeamercolor{subsection in toc}{fg=myblue}
 
 \setbeamertemplate{frametitle continuation}{} %\insertcontinuationcount
-
 \setbeamertemplate{section in head/foot}{\hfill\insertsectionheadnumber.~\insertsectionhead}
 \setbeamertemplate{section in head/foot shaded}{\color{structure!50}\hfill\insertsectionheadnumber.~\insertsectionhead}
 \setbeamertemplate{section in toc}{\inserttocsectionnumber.~\inserttocsection}
 \setbeamertemplate{subsection in toc}{\hspace*{1em}\inserttocsectionnumber.\inserttocsubsectionnumber.~\inserttocsubsection\\}
 
 
-%%%% http://tex.stackexchange.com/questions/152565/define-a-new-block-environment-in-latex-beamer
+% http://tex.stackexchange.com/questions/152565/define-a-new-block-environment-in-latex-beamer
 
 \newenvironment<>{remark}[1]{%
   \setbeamercolor{block title}{fg=white,bg=myblue}%
@@ -275,17 +286,8 @@
   \setbeamercolor{block title}{fg=white,bg=blue!75!black}%
   \begin{block}#2{#1}}{\end{block}}
 
-%\titlegraphic{\includegraphics[width=1.75cm]{Template/fomlogo}}
+\setbeamertemplate{navigation symbols}{} % no navigation symbols 
 
-\setbeamertemplate{navigation symbols}{}
-
-\setbeamercolor{itemize item}{fg=myblue}
-\setbeamercolor{itemize subitem}{fg=myblue}
-\setbeamercolor{itemize subsubitem}{fg=myblue}
-\setbeamercolor{caption name}{fg=myblue}
-
-\setbeamercolor{description item}{fg=myblue}
-\setbeamercolor{enumerate item}{fg=myblue}
 
 
 \setbeamertemplate{itemize item}{$\filledsquare$} % from MnSymbols
@@ -293,8 +295,7 @@
 \setbeamertemplate{itemize subsubitem}{\textendash}% if you want a triangle
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-%%%%% TOC Definition
+% TOC Definition
 
 \AtBeginSection[]
 {
@@ -330,31 +331,9 @@
 \makeatletter
 
 
-
-
-%%% personal commands
-
-%%%% for bold Strings like inner-frame headers
-\newcommand{\fomh}[1]{\textbf{\textcolor{fom}{#1}}}
-\newcommand{\fomc}[1]{\texttt{\textcolor{fom}{#1}}}
+%%% time-saving commands
 
 \newcommand{\okay}{\ding{51}}
-%%% good and bad 
-\newcommand{\good}[1]{\textbf{\textcolor{green}{#1}}}
-\newcommand{\bad}[1]{\textbf{\textcolor{red}{#1}}}
-
-%\renewcommand{\H}[1]{\texttt{<#1>}}
-
-\renewcommand{\H}[1]{\lstinline[language={HTML},basicstyle={\texttt\normalsize},morekeywords={rp,rt,section,ruby,figure,figcaption,article,aside,nav,header,footer,main,mark,bdi,time,wbr,details,dialog,datalist,keygen,meter,output,progress,menuitem,summary,audio,canvas,embed,source,track,video}]{<#1>}}
-
-\newcommand{\HA}[1]{\texttt{<#1\,/>}}
-
-%\newcommand{\HS}[1]{\texttt{<#1></#1>}:}
-
-\newcommand{\HS}[1]{\lstinline[language={HTML},basicstyle={\texttt\normalsize},morekeywords={mark,bdi,time,wbr,details,dialog,datalist,keygen,meter,output,progress,menuitem,summary,audio,canvas,embed,source,track,video}]{<#1></#1>:}}
-
-\newcommand{\todo}[1]{\textbf{#1}}
-\newcommand{\HT}[1]{\texttt{<#1></#1>}}
 
 \newcommand{\bilds}[1]{
 	\begin{figure}%
@@ -383,15 +362,10 @@
 \end{figure}}
 
 
-%\usepackage[]{navigator}
-%\newcommand{\mbed}[1]{%
-%\embeddedfile[#1]{#1}{#1}}
-
 \usepackage{attachfile}
 \newcommand{\ta}[1]{\textattachfile[color=1 0 0]{#1}{\faFilePowerpointO}}
 
 \newcommand{\pypy}[2]{\lstinputlisting[language={Python},caption={#1 \ta{#2}}]{#2}}
-
 
 
 \hypersetup{

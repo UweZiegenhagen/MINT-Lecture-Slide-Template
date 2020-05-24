@@ -12,8 +12,7 @@
 \framesubtitle{Some Subtitle}
 
 \begin{itemize}
-\item A bullet point \chck
-\item A bullet point  
+\item A bullet point  \okay
 \item A bullet point  
 \item A bullet point  
 \item A bullet point  
@@ -33,6 +32,42 @@
 \caption{This is a cat}\label{fig:cat}
 \end{figure}
 \end{center}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{An Image}
+\framesubtitle{\textbackslash bilds\{<image>\}}
+
+\bilds{Images/testimage}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{An Image}
+\framesubtitle{\textbackslash bild\{<scale>\}\{<image>\}\{<caption>\}}
+
+\bild{0.8}{Images/testimage}{The Caption}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{An Image}
+\framesubtitle{\textbackslash bildf\{<scale>\}\{<image>\}\{<caption>\}}
+
+\bildf{0.8}{Images/testimage}{The Caption}
+
+\end{frame}
+
+
+\begin{frame}
+\frametitle{An Image}
+\framesubtitle{\textbackslash bildfc\{<scale>\}\{<image>\}\{<caption>\}}
+
+\bildfc{0.4}{Images/testimage}{The Caption}
 
 \end{frame}
 
@@ -86,5 +121,19 @@ print(q.calculate_area())
 \lstinputlisting[language={Python}, caption={Another square class in Python}, label={lis:square}]{Listings/Square.py}
 
 \end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Some Code Listing}
+\framesubtitle{\textbackslash pypy\{Caption\}\{File\}}
+
+\pypy{The Caption}{Listings/Square.py}
+
+
+\end{frame}
+
+
+
+
 
 
